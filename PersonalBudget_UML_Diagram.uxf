@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>30</y>
+      <w>260</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>PersonalBudget
+--
+FILE_NAME_WITH_INCOMES
+FILE_NAME_WITH_EXPENSES
+--
+PersonalBudget()
+userRegistration()
+userLogin()
+userLogout()
+chooseOptionFromRegistrationMenu()
+chooseOptionFromMainMenu()
+addIncome()
+addExpense()
+isUserLogged()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>30</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>User
+--
+userId
+login
+password
+--
+setUserId()
+setLogin()
+setPassword()
+getUserId()
+getLogin()
+getPassword()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>20</y>
+      <w>210</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Date
+--
+date
+day
+month
+year
+--
+setYear()
+setMonth()
+setDay()
+getDate()
+getYear()
+getMonth()
+getDay()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>230</y>
+      <w>250</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>UserMenager
+--
+users : vector
+--
+userRegistration()
+userLogin()
+userLogout()
+chooseOptionFromRegistrationMenu()
+getIdLoggedUser()
+isLoginExist()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>250</y>
+      <w>140</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>DateMenager
+--
+calculatedTime
+year
+month
+day
+--
+getCurrentDate()
+getCurrentYear()
+getCurrentMonth()
+getCurrentDay()
+isDateCorrect()
+isValidYear()
+isValidMonth()
+isValidDay()
+isValidFormatDate()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>20</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Expense
+--
+expenseId
+--
+setExpenseId()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>110</y>
+      <w>160</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ExpenseFile
+--
+fileNameWithExpenses
+lastItemId
+idLoggedUser
+expenses : vector
+--
+addExpenseToFile()
+getExpenseFromFile()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>300</y>
+      <w>150</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>IncomeFile
+--
+fileNameWithIncomes
+lastItemId
+idLoggedUser
+incomes : vector
+--
+addIncomeToFile()
+getIncomeFromFile()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1060</x>
+      <y>240</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>xmlFile
+--
+FILE_NAME
+--
+getFileName()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>20</y>
+      <w>120</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Item
+--
+itemId
+userId
+itemDate
+itemName
+itemAmount
+--
+setItemId()
+setUserId()
+setItemDate()
+setItemName()
+setItemAmount()
+getItemId()
+getUserId()
+getItemDate()
+getItemName()
+getItemAmount()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>330</y>
+      <w>170</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>ItemMenager
+--
+expenses
+incomes
+--
+provideIncomeDetails()
+provideExpansesDetail()
+getNewIncomeId()
+getNewExpensesId()
+addIncome()
+addExpense()
+provideDate()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>400</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>FileWithUsers
+--
+fileNameWithUsers
+--
+addUserToFile()
+checkLogin()
+loadUserFromFile()</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
