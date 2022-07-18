@@ -5,7 +5,7 @@ void UserMenager::userRegistration()
     User user = giveNewUserDetails();
 
     users.push_back(user);
-//    fileWithUsers.addUserToFile(user);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Account created successfully!" << endl << endl;
     system("pause");

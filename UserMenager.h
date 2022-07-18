@@ -15,18 +15,18 @@ class UserMenager
     int idLoggedUser;
     vector<User> users;
 
-//    FileWithUsers fileWithUsers;
+    FileWithUsers fileWithUsers;
 
     User giveNewUserDetails();
     int getUserIdForNewUser();
     bool isLoginExist(string login);
 
 public:
-//    UserMenager(string fileNameWithUsers) : fileWithUsers (fileNameWithUsers)
-//    {
-//        idLoggedUser = 0;
+    UserMenager(string fileNameWithUsers) : fileWithUsers (fileNameWithUsers)
+    {
+        idLoggedUser = 0;
 //        users=fileWithUsers.loadUserFromFile();
-//    }
+    }
     void userRegistration();
     int userLogin();
     int getUserIdFromLoggedUser();
