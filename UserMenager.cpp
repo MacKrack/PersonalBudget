@@ -120,7 +120,7 @@ int UserMenager::userLogout()
 
 bool UserMenager::isUserLogged()
 {
-    if (idLoggedUser>0)
+    if (loggedUser.getUserId()>0)
         return true;
     else
         return false;
