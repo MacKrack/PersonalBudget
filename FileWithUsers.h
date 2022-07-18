@@ -2,6 +2,7 @@
 #define FILEWITHUSERS_H
 
 #include <iostream>
+#include <vector>
 
 #include "XmlFile.h"
 
@@ -12,6 +13,7 @@ public:
     FileWithUsers(string fileName) : XmlFile (fileName) {};
 
     void addUserToFile(User user);
+    vector<User> loadUsersFromFile();
 };
 
 #endif // FILEWITHUSERS_H

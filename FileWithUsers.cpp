@@ -20,3 +20,25 @@ void FileWithUsers::addUserToFile(User user)
     xml.AddElem("Password", user.getPassword());
     xml.Save("Users.xml");
 }
+
+vector<User> FileWithUsers::loadUsersFromFile()
+{
+    vector <User> users;
+    CMarkup xml;
+    xml.Load("Users.xml");
+    xml.FindElem("Users");
+    xml.IntoElem();
+    while (xml.FindElem("User")) {
+        User user;
+        xml.IntoElem();
+        xml.FindElem("UserId");
+        user.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("Login");
+        user.setLogin(xml.GetData());
+        xml.FindElem("Password");
+        user.setPassword(xml.GetData());
+        xml.OutOfElem();
+        users.push_back(user);
+    }
+    return users;
+}
