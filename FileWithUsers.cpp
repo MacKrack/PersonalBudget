@@ -28,7 +28,8 @@ vector<User> FileWithUsers::loadUsersFromFile()
     xml.Load("Users.xml");
     xml.FindElem("Users");
     xml.IntoElem();
-    while (xml.FindElem("User")) {
+    while (xml.FindElem("User"))
+    {
         User user;
         xml.IntoElem();
         xml.FindElem("UserId");
@@ -41,4 +42,23 @@ vector<User> FileWithUsers::loadUsersFromFile()
         users.push_back(user);
     }
     return users;
+}
+
+void FileWithUsers::changePasswordForLoggedUserInFile(User loggedUser)
+{
+    CMarkup xml;
+    xml.Load("Users.xml");
+    xml.FindElem("Users");
+    xml.IntoElem();
+    while(xml.FindElem("User"))
+    {
+        xml.FindChildElem("UserId");
+        if(atoi( MCD_2PCSZ(xml.GetChildData())) == loggedUser.getUserId())
+        {
+            xml.FindChildElem("Password");
+            xml.SetChildData(loggedUser.getPassword());
+            break;
+        }
+    }
+    xml.Save("Users.xml");
 }

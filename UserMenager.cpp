@@ -75,6 +75,7 @@ int UserMenager::userLogin()
                 {
                     cout << endl << "Successfully logged." << endl << endl;
                     system("pause");
+                    loggedUser = users[i];
                     return idLoggedUser = users[i].getUserId();
                 }
             }
@@ -99,11 +100,12 @@ void UserMenager::changePasswordForLoggedUser()
         if (users[i].getUserId() == idLoggedUser)
         {
             users[i].setPassword(newPassword);
+            loggedUser.setPassword(newPassword);
             cout << "Password changed." << endl << endl;
             system("pause");
         }
     }
-//    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+    fileWithUsers.changePasswordForLoggedUserInFile(loggedUser);
 }
 
 int UserMenager::getUserIdFromLoggedUser()

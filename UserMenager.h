@@ -13,6 +13,7 @@ using namespace std;
 class UserMenager
 {
     int idLoggedUser;
+    User loggedUser;
     vector<User> users;
 
     FileWithUsers fileWithUsers;

@@ -14,6 +14,7 @@ public:
 
     void addUserToFile(User user);
     vector<User> loadUsersFromFile();
+    void changePasswordForLoggedUserInFile(User loggedUser);
 };
 
 #endif // FILEWITHUSERS_H
