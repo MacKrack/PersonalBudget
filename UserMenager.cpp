@@ -144,3 +144,8 @@ void UserMenager::displayAllUsers()
         system("pause");
     }
 }
+
+User UserMenager::getLoggedUser()
+{
+    return loggedUser;
+}

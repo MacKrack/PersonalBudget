@@ -18,6 +18,8 @@ public:
     static string loadLine();
     static int conversionTmToInt(tm* &tmDate);
     static string conversionDoubleToString(double number);
+    static char loadChar();
+
 
 
 };

@@ -40,3 +40,20 @@ string AdditionalMethods::conversionDoubleToString(double number)
     return  str;
 }
 
+char AdditionalMethods::loadChar()
+{
+    string input = "";
+    char sign  = {0};
+    while (true) {
+        cin.sync();
+        getline(cin, input);
+
+        if (input.length() == 1) {
+            sign = input[0];
+            break;
+        }
+        cout << "It is not single char. Enter again correctly." << endl;
+    }
+    return sign;
+}
+
