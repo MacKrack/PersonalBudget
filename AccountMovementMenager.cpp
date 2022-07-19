@@ -5,6 +5,11 @@ void AccountMovementMenager::addIncome()
     addMovement(incomes, FILE_NAME_WITH_INCOMES, "Income");
 }
 
+void AccountMovementMenager::addExpense()
+{
+    addMovement(expenses, FILE_NAME_WITH_EXPANSES, "Expense");
+}
+
 void AccountMovementMenager::addMovement(vector <AccountMovement> &accountMovements, string fileName, string keyword)
 {
     AccountMovement accountMovement;
@@ -120,22 +125,24 @@ double AccountMovementMenager::convertStringValueToDouble(string stringAmount)
 }
 
 
-void AccountMovementMenager::displayAllIncomes()
+void AccountMovementMenager::displayAllAccountMovement(vector <AccountMovement> &accountMovements)
 {
-    if (incomes.empty() == true)
+    //AccountMovement accountMovement;
+
+    if (accountMovements.empty() == true)
     {
         cout << "No Incomes exist yet." << endl;
         system("pause");
     }
     else
     {
-        for (int i=0; i < incomes.size(); i++)
+        for (int i=0; i < accountMovements.size(); i++)
         {
-            cout << endl << incomes[i].getUserId() << endl;
-            cout << incomes[i].getMoveId() << endl;
-            cout << incomes[i].getDate() << endl;
-            cout << incomes[i].getMoveDetails() << endl;
-            cout << incomes[i].getAmount() << endl;
+            cout << endl << accountMovements[i].getUserId() << endl;
+            cout << accountMovements[i].getMoveId() << endl;
+            cout << accountMovements[i].getDate() << endl;
+            cout << accountMovements[i].getMoveDetails() << endl;
+            cout << accountMovements[i].getAmount() << endl;
 
         }
         system("pause");
