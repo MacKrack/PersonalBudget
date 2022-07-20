@@ -9,17 +9,21 @@
 #include "AdditionalMethods.h"
 #include "User.h"
 #include "DateMenager.h"
+#include "FileRegisteringAccountMovements.h"
 
 using namespace std;
 
 class AccountMovementMenager
 {
-
+    vector <AccountMovement> incomes;
+    vector <AccountMovement> expenses;
     const string FILE_NAME_WITH_INCOMES;
     const string FILE_NAME_WITH_EXPANSES;
     User copyOfLoggedUser;
 
+    FileRegisteringAccountMovements fileRegisteringAccountMovements;
 
+    void addMovement(vector <AccountMovement> &accountMovements, string fileName, string keyword);
     int getNewTransactionId(vector <AccountMovement> accountMovements);
     double getTransactionAmount();
     bool isTransactionAmountIsCorrectValue(string stringValue);
@@ -27,11 +31,10 @@ class AccountMovementMenager
 
 
 public:
-    AccountMovementMenager(string newIncomesFileName, string newExpensesFileName, User newLoggedUser) : FILE_NAME_WITH_INCOMES(newIncomesFileName), FILE_NAME_WITH_EXPANSES(newExpensesFileName), copyOfLoggedUser(newLoggedUser){};
-
-    vector <AccountMovement> incomes;
-    vector <AccountMovement> expenses;
-    void addMovement(vector <AccountMovement> &accountMovements, string fileName, string keyword);
+    AccountMovementMenager(string newIncomesFileName, string newExpensesFileName, User newLoggedUser)
+    : FILE_NAME_WITH_INCOMES(newIncomesFileName), FILE_NAME_WITH_EXPANSES(newExpensesFileName), copyOfLoggedUser(newLoggedUser)
+    {
+    };
 
     void addIncome();
     void addExpense();

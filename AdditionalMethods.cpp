@@ -44,11 +44,13 @@ char AdditionalMethods::loadChar()
 {
     string input = "";
     char sign  = {0};
-    while (true) {
+    while (true)
+    {
         cin.sync();
         getline(cin, input);
 
-        if (input.length() == 1) {
+        if (input.length() == 1)
+        {
             sign = input[0];
             break;
         }
@@ -57,3 +59,41 @@ char AdditionalMethods::loadChar()
     return sign;
 }
 
+string AdditionalMethods::conversionIntDateToStringDate (int intDate)
+{
+    string stringDate, stringDay, stringMonth,stringYear;
+
+    int day, month, year, temp;
+
+    day = intDate % 100;
+
+    if(day < 10)
+    {
+        stringDay = "0" + conversionIntToString(day);
+    }
+    else
+    {
+        stringDay = conversionIntToString(day);
+    }
+
+    temp = intDate / 100;
+
+    month = temp % 100;
+
+    if(month < 10)
+    {
+        stringMonth = "0" + conversionIntToString(month);
+    }
+    else
+    {
+        stringMonth = conversionIntToString(month);
+    }
+
+    year = temp / 100;
+
+    stringYear = conversionIntToString(year);
+
+    stringDate = stringYear + "-" + stringMonth + "-" + stringDay;
+
+    return stringDate;
+}

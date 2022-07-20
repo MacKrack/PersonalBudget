@@ -19,6 +19,8 @@ public:
     static int conversionTmToInt(tm* &tmDate);
     static string conversionDoubleToString(double number);
     static char loadChar();
+    static string conversionIntDateToStringDate(int intDate);
+
 
 
 

@@ -18,12 +18,14 @@ void AccountMovementMenager::addMovement(vector <AccountMovement> &accountMoveme
     accountMovement.setMoveId(getNewTransactionId(accountMovements));
     accountMovement.setUserId(copyOfLoggedUser.getUserId());
     char choice = NULL;
-    do {
+    do
+    {
         system("cls");
         cout << "Do you want to add new " << keyword << " with today date? (y/n)" << endl;
         cin.sync();
         choice = AdditionalMethods::loadChar();
-        switch (choice) {
+        switch (choice)
+        {
         case 'y':
             accountMovement.setDate(DateMenager::getCurrentDate());
             break;
@@ -35,14 +37,15 @@ void AccountMovementMenager::addMovement(vector <AccountMovement> &accountMoveme
             cout << "Incorrect choice." << endl;
             break;
         }
-    } while (choice!='n' && choice!='y');
+    }
+    while (choice!='n' && choice!='y');
     cout << "Enter details of " << keyword << " : ";
     item = AdditionalMethods::loadLine();
     accountMovement.setMoveDetails(item);
     cout << "Enter amount of " << keyword << " : ";
     accountMovement.setAmount(getTransactionAmount());
     accountMovements.push_back(accountMovement);
-//    fileWithTransactions.addTransactionToFile(accountMovement, fileName);
+    fileRegisteringAccountMovements.addMovementToFile(accountMovement, fileName);
     transform(keyword.begin(), keyword.end(), keyword.begin(), ::tolower);
     cout << "Added movement - " << keyword << "." << endl << endl;
     system("pause");
@@ -60,14 +63,17 @@ double AccountMovementMenager::getTransactionAmount()
 {
     double transactionAmount = 0;
     string stringAmount = "";
-    do {
+    do
+    {
         stringAmount = AdditionalMethods::loadLine();
-        if (isTransactionAmountIsCorrectValue(stringAmount)) {
+        if (isTransactionAmountIsCorrectValue(stringAmount))
+        {
             transactionAmount = convertStringValueToDouble(stringAmount);
             break;
         }
         cout << "Enter correct value: " << endl;
-    } while (true);
+    }
+    while (true);
     return transactionAmount;
 }
 
@@ -75,7 +81,7 @@ bool AccountMovementMenager::isTransactionAmountIsCorrectValue(string stringAmou
 {
     int dotCounter = 0;
     for (int i = 0; i < stringAmount.size(); i++)
-        {
+    {
         int sign = stringAmount[i];
         if (sign == 44 || sign == 46)
         {
@@ -107,7 +113,7 @@ bool AccountMovementMenager::isTransactionAmountIsCorrectValue(string stringAmou
 
 double AccountMovementMenager::convertStringValueToDouble(string stringAmount)
 {
-     double doubleAmount = 0;
+    double doubleAmount = 0;
     for (int i = 0, j = stringAmount.size()-1; i < stringAmount.size(); i++, j--)
     {
         int sign = stringAmount[i];

@@ -2,7 +2,6 @@
 #define FILEWITHUSERS_H
 
 #include <iostream>
-#include <vector>
 
 #include "XmlFile.h"
 
