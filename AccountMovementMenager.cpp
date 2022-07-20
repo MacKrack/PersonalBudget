@@ -152,3 +152,120 @@ void AccountMovementMenager::displayAllAccountMovement(vector <AccountMovement> 
         system("pause");
     }
 }
+
+void AccountMovementMenager::showCurrentMonthBalance()
+{
+    showBalanceFromCurrentMonth(incomes, "Incomes", expenses, "Expenses");
+}
+
+void AccountMovementMenager::showBalanceFromCurrentMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
+{
+    system("cls");
+
+    int endDate = DateMenager::getCurrentDate();
+
+    int startDate = DateMenager::getFirstDayOfMonth(endDate);
+
+    cout << "Balance period from: " << AdditionalMethods::conversionIntDateToStringDate(startDate) << " till " << AdditionalMethods::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(accountMovements, keyword, startDate, endDate);
+    cout << endl << endl;
+    double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
+    cout << endl << endl;
+    cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
+
+double AccountMovementMenager::sortAndDisplayTransactions(vector <AccountMovement> accountMovements, string keyword, int startDate, int endDate)
+{
+    vector <AccountMovement> accountMovementsOfLoggedUser;
+
+    for(int i = 0; i < accountMovements.size(); i++)
+    {
+        if(accountMovements[i].getUserId() == copyOfLoggedUser.getUserId())
+        {
+            accountMovementsOfLoggedUser.push_back(accountMovements[i]);
+        }
+    }
+
+    sort(accountMovementsOfLoggedUser.begin(), accountMovementsOfLoggedUser.end(), dateComparison);
+
+    double sum = 0;
+
+    cout << endl << "Tally " << keyword << endl;
+
+    for(int i = 0; i < accountMovementsOfLoggedUser.size(); i++)
+    {
+        if(accountMovementsOfLoggedUser[i].getDate() >= startDate && accountMovementsOfLoggedUser[i].getDate() <= endDate)
+        {
+            cout << AdditionalMethods::conversionIntDateToStringDate(accountMovementsOfLoggedUser[i].getDate()) << " " << accountMovementsOfLoggedUser[i].getMoveDetails() << ": " << accountMovementsOfLoggedUser[i].getAmount() << endl;
+            sum += accountMovementsOfLoggedUser[i].getAmount();
+        }
+    }
+    cout << endl << "Sum " << keyword << " : " << sum << endl;
+
+    return sum;
+}
+
+void AccountMovementMenager::showPreviousMonthBalance()
+{
+    showBalanceFromPreviousMonth(incomes, "Incomes", expenses, "Expenses");
+}
+
+void AccountMovementMenager::showBalanceFromPreviousMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
+{
+    system("cls");
+
+    int startDate = DateMenager::getFirstDayOFPreviousMonth(DateMenager::getCurrentDate());
+
+    int endDate = DateMenager::getLastDayOFPreviousMonth(DateMenager::getCurrentDate());
+
+    cout << "Balance period from: " << AdditionalMethods::conversionIntDateToStringDate(startDate) << " till " << AdditionalMethods::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(accountMovements, keyword, startDate, endDate);
+    cout << endl << endl;
+    double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
+    cout << endl << endl;
+    cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
+
+void AccountMovementMenager::showSelectedPeriodBalance()
+{
+    showBalanceFromSelectedPeriod(incomes, "Incomes", expenses, "Expenses");
+}
+
+void AccountMovementMenager::showBalanceFromSelectedPeriod(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
+{
+    system("cls");
+
+    int startDate = 0;
+    cout << "Enter start date (yyyy-mm-dd): " << endl;
+    startDate = DateMenager::getUserDate();
+
+    int endDate = 0;
+    cout << "Enter end date (yyyy-mm-dd): " << endl;
+
+    endDate = DateMenager::getUserDate();
+
+    if (endDate < startDate)
+    {
+        cout << "End date can not by earlier than start date." << endl;
+
+
+        cout << "Enter start date (yyyy-mm-dd): " << endl;
+        startDate = DateMenager::getUserDate();
+
+
+        cout << "Enter end date (yyyy-mm-dd): " << endl;
+        endDate = DateMenager::getUserDate();
+    }
+
+    system("cls");
+
+    cout << "Balance period from: " << AdditionalMethods::conversionIntDateToStringDate(startDate) << " till " << AdditionalMethods::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(accountMovements, keyword, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
