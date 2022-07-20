@@ -135,3 +135,58 @@ int DateMenager::getFirstDayOfMonth(int date)
     return finallyDate;
 }
 
+int DateMenager::getFirstDayOFPreviousMonth(int date)
+{
+    int finallyDate = 0;
+    int month = 0;
+    int year = 0;
+    int support = date % 100;
+    int supportSecond = date - support;
+    support = supportSecond / 100;
+    month = support % 100;
+    if(month == 1)
+    {
+        year = (support - month) / 100 - 1;
+    }
+    else
+    {
+        year = (support - month) / 100;
+    }
+
+    if(month == 1)
+    {
+        finallyDate = (year * 100 + 12) * 100 + 1;
+    }
+    else
+    {
+        finallyDate = (year * 100 + (month - 1)) * 100 + 1;
+    }
+}
+
+int DateMenager::getLastDayOFPreviousMonth(int date)
+{
+    int finallyDate = 0;
+    int month = 0;
+    int year = 0;
+    int support = date % 100;
+    int supportSecond = date - support;
+    support = supportSecond / 100;
+    month = support % 100;
+    if(month == 1)
+    {
+        year = (support - month) / 100 - 1;
+    }
+    else
+    {
+        year = (support - month) / 100;
+    }
+
+    if(month == 1)
+    {
+        finallyDate = (year * 100 + 12) * 100 + 31;
+    }
+    else
+    {
+        finallyDate = (year * 100 + (month - 1)) * 100 + daysInMonth(year, (month - 1));
+    }
+}

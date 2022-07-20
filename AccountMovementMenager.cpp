@@ -205,3 +205,27 @@ double AccountMovementMenager::sortAndDisplayTransactions(vector <AccountMovemen
 
     return sum;
 }
+
+void AccountMovementMenager::showPreviousMonthBalance()
+{
+    showBalanceFromPreviousMonth(incomes, "Incomes", expenses, "Expenses");
+}
+
+void AccountMovementMenager::showBalanceFromPreviousMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
+{
+    system("cls");
+
+    int startDate = DateMenager::getFirstDayOFPreviousMonth(DateMenager::getCurrentDate());
+
+    int endDate = DateMenager::getLastDayOFPreviousMonth(DateMenager::getCurrentDate());
+
+    cout << "Balance period from: " << AdditionalMethods::conversionIntDateToStringDate(startDate) << " till " << AdditionalMethods::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(accountMovements, keyword, startDate, endDate);
+    cout << endl << endl;
+    double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
+    cout << endl << endl;
+    cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
+
+

@@ -45,6 +45,7 @@ class AccountMovementMenager
     double convertStringValueToDouble(string stringValue);
     void showBalanceFromCurrentMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond);
     double sortAndDisplayTransactions(vector <AccountMovement> accountMovements, string keyword, int startDate, int endDate);
+    void showBalanceFromPreviousMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond);
 
 
 
@@ -59,6 +60,7 @@ public:
     void addIncome();
     void addExpense();
     void showCurrentMonthBalance();
+    void showPreviousMonthBalance();
 
 
 
