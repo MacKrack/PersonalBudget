@@ -133,8 +133,6 @@ double AccountMovementMenager::convertStringValueToDouble(string stringAmount)
 
 void AccountMovementMenager::displayAllAccountMovement(vector <AccountMovement> &accountMovements)
 {
-    //AccountMovement accountMovement;
-
     if (accountMovements.empty() == true)
     {
         cout << "No Incomes exist yet." << endl;

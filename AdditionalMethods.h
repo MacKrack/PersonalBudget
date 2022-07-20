@@ -20,8 +20,8 @@ public:
     static string conversionDoubleToString(double number);
     static char loadChar();
     static string conversionIntDateToStringDate(int intDate);
-
-
+    static int conversionStringDateTointDate(string stringDate);
+    static double conversionStringToDouble(string number);
 
 
 };

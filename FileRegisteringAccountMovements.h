@@ -9,11 +9,15 @@
 #include "Markup.h"
 #include "AdditionalMethods.h"
 
+using namespace std;
+
 class FileRegisteringAccountMovements
 {
 
 public:
     void addMovementToFile(AccountMovement accountMovement, string fileName);
+    vector <AccountMovement> loadMovementFromFile(string fileName, int idOfLoggedUser);
+
 
 };
 

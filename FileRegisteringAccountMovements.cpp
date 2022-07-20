@@ -23,3 +23,30 @@ void FileRegisteringAccountMovements::addMovementToFile (AccountMovement account
     xml.OutOfElem();
     xml.Save(fileName);
 }
+
+vector<AccountMovement> FileRegisteringAccountMovements::loadMovementFromFile(string fileName, int idOfLoggedUser)
+{
+    vector <AccountMovement> accountMovements;
+    CMarkup xml;
+    xml.Load(fileName);
+    xml.FindElem("Movements");
+    xml.IntoElem();
+    while (xml.FindElem("Movement"))
+    {
+        AccountMovement accountMovement;
+        xml.IntoElem();
+        xml.FindElem("MoveId");
+        accountMovement.setMoveId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("UserId");
+        accountMovement.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("Date");
+        accountMovement.setDate(AdditionalMethods::conversionStringDateTointDate(xml.GetData()));
+        xml.FindElem("MoveDetail");
+        accountMovement.setMoveDetails(xml.GetData());
+        xml.FindElem("Amount");
+        accountMovement.setAmount(AdditionalMethods::conversionStringToDouble(xml.GetData()));
+        accountMovements.push_back(accountMovement);
+        xml.OutOfElem();
+    }
+    return accountMovements;
+}
