@@ -46,6 +46,7 @@ class AccountMovementMenager
     void showBalanceFromCurrentMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond);
     double sortAndDisplayTransactions(vector <AccountMovement> accountMovements, string keyword, int startDate, int endDate);
     void showBalanceFromPreviousMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond);
+    void showBalanceFromSelectedPeriod(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond);
 
 
 
@@ -61,12 +62,10 @@ public:
     void addExpense();
     void showCurrentMonthBalance();
     void showPreviousMonthBalance();
-
-
+    void showSelectedPeriodBalance();
 
     //temp
     void displayAllAccountMovement(vector <AccountMovement> &accountMovements);
-
 };
 
 #endif // ACCOUNTMOVEMENTMENAGER_H
