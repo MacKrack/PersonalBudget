@@ -37,6 +37,7 @@ public:
 
     //temp methods
     void displayAllUsers();
+    User getLoggedUser();
 
 };
 
