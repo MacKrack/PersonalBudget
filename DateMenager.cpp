@@ -126,3 +126,12 @@ int DateMenager::daysInMonth(int year, int month)
             return 28;
     }
 }
+
+int DateMenager::getFirstDayOfMonth(int date)
+{
+    int finallyDate = 0;
+    int support = date % 100;
+    finallyDate = date - support + 1;
+    return finallyDate;
+}
+

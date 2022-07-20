@@ -17,6 +17,8 @@ public:
     static bool isDateIsCorrect(string date);
     static int convertStringDateToInt(string date);
     static int daysInMonth(int year, int month);
+    static int getFirstDayOfMonth(int date);
+
 
 
 
