@@ -20,7 +20,7 @@ void AccountMovementMenager::addMovement(vector <AccountMovement> &accountMoveme
     char choice = NULL;
     do
     {
-        system("cls");
+        system("clear");
         cout << "Do you want to add new " << keyword << " with today date? (y/n)" << endl;
         cin.sync();
         choice = AdditionalMethods::loadChar();
@@ -48,7 +48,7 @@ void AccountMovementMenager::addMovement(vector <AccountMovement> &accountMoveme
     fileRegisteringAccountMovements.addMovementToFile(accountMovement, fileName);
     transform(keyword.begin(), keyword.end(), keyword.begin(), ::tolower);
     cout << "Added movement - " << keyword << "." << endl << endl;
-    system("pause");
+    cin.get();
 }
 
 int AccountMovementMenager::getNewTransactionId(vector <AccountMovement> accountMovements)
@@ -136,7 +136,7 @@ void AccountMovementMenager::displayAllAccountMovement(vector <AccountMovement> 
     if (accountMovements.empty() == true)
     {
         cout << "No Incomes exist yet." << endl;
-        system("pause");
+        cin.get();
     }
     else
     {
@@ -149,7 +149,7 @@ void AccountMovementMenager::displayAllAccountMovement(vector <AccountMovement> 
             cout << accountMovements[i].getAmount() << endl;
 
         }
-        system("pause");
+        cin.get();
     }
 }
 
@@ -160,7 +160,7 @@ void AccountMovementMenager::showCurrentMonthBalance()
 
 void AccountMovementMenager::showBalanceFromCurrentMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
 {
-    system("cls");
+    system("clear");
 
     int endDate = DateMenager::getCurrentDate();
 
@@ -172,7 +172,7 @@ void AccountMovementMenager::showBalanceFromCurrentMonth(vector <AccountMovement
     double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
     cout << endl << endl;
     cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
-    system("pause");
+    cin.get();
 }
 
 double AccountMovementMenager::sortAndDisplayTransactions(vector <AccountMovement> accountMovements, string keyword, int startDate, int endDate)
@@ -213,7 +213,7 @@ void AccountMovementMenager::showPreviousMonthBalance()
 
 void AccountMovementMenager::showBalanceFromPreviousMonth(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
 {
-    system("cls");
+    system("clear");
 
     int startDate = DateMenager::getFirstDayOFPreviousMonth(DateMenager::getCurrentDate());
 
@@ -225,7 +225,7 @@ void AccountMovementMenager::showBalanceFromPreviousMonth(vector <AccountMovemen
     double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
     cout << endl << endl;
     cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
-    system("pause");
+    cin.get();
 }
 
 void AccountMovementMenager::showSelectedPeriodBalance()
@@ -235,7 +235,7 @@ void AccountMovementMenager::showSelectedPeriodBalance()
 
 void AccountMovementMenager::showBalanceFromSelectedPeriod(vector <AccountMovement> accountMovements, string keyword, vector <AccountMovement> accountMovementsSecond, string keywordSecond)
 {
-    system("cls");
+    system("clear");
 
     int startDate = 0;
     cout << "Enter start date (yyyy-mm-dd): " << endl;
@@ -259,7 +259,7 @@ void AccountMovementMenager::showBalanceFromSelectedPeriod(vector <AccountMoveme
         endDate = DateMenager::getUserDate();
     }
 
-    system("cls");
+    system("clear");
 
     cout << "Balance period from: " << AdditionalMethods::conversionIntDateToStringDate(startDate) << " till " << AdditionalMethods::conversionIntDateToStringDate(endDate) << endl;
     double incomesSum = sortAndDisplayTransactions(accountMovements, keyword, startDate, endDate);
@@ -267,5 +267,5 @@ void AccountMovementMenager::showBalanceFromSelectedPeriod(vector <AccountMoveme
     double expensesSum = sortAndDisplayTransactions(accountMovementsSecond, keywordSecond, startDate, endDate);
     cout << endl << "---------------------------------------------------------------" << endl;
     cout << endl << "Difference between incomes and expenses: " << incomesSum - expensesSum << endl;
-    system("pause");
+    cin.get();
 }

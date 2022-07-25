@@ -8,7 +8,7 @@ void UserMenager::userRegistration()
     fileWithUsers.addUserToFile(user);
 
     cout << endl << "Account created successfully!" << endl << endl;
-    system("pause");
+    cin.get();
 }
 
 User UserMenager::giveNewUserDetails()
@@ -74,18 +74,18 @@ int UserMenager::userLogin()
                 if (users[i].getPassword() == password)
                 {
                     cout << endl << "Successfully logged." << endl << endl;
-                    system("pause");
+                    cin.get();
                     loggedUser = users[i];
                     return idLoggedUser = users[i].getUserId();
                 }
             }
             cout << "Entered wrong password - 3 times." << endl;
-            system("pause");
+            cin.get();
             return idLoggedUser = 0;
         }
     }
     cout << "User with that login does not exist" << endl << endl;
-    system("pause");
+    cin.get();
     return idLoggedUser = 0;
 }
 
@@ -102,7 +102,7 @@ void UserMenager::changePasswordForLoggedUser()
             users[i].setPassword(newPassword);
             loggedUser.setPassword(newPassword);
             cout << "Password changed." << endl << endl;
-            system("pause");
+            cin.get();
         }
     }
     fileWithUsers.changePasswordForLoggedUserInFile(loggedUser);
@@ -131,7 +131,7 @@ void UserMenager::displayAllUsers()
     if (users.empty() == true)
     {
         cout << "No Users exist yet." << endl;
-        system("pause");
+        cin.get();
     }
     else
     {
@@ -141,7 +141,7 @@ void UserMenager::displayAllUsers()
             cout << users[i].getLogin() << endl;
             cout << users[i].getPassword() << endl;
         }
-        system("pause");
+        cin.get();
     }
 }
 
