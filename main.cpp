@@ -1,70 +1,109 @@
 #include <iostream>
 
+#include "PersonalBudget.h"
+
 using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
-    char wybor;
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml");
+
+    char choice;
 
     while (true)
     {
-        if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
+        if (personalBudget.isUserLogged())
         {
-            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
+            choice = personalBudget.chooseActionsFromMainMenu();
 
-            switch (wybor)
+            switch (choice)
             {
             case '1':
-                ksiazkaAdresowa.rejestracjaUzytkownika();
+                personalBudget.userRegistration();
                 break;
             case '2':
-                ksiazkaAdresowa.logowanieUzytkownika();
+                personalBudget.userLogin();
                 break;
+            //    temp
+            case '3':
+                personalBudget.displayAllUsers();
+                break;
+                //
             case '9':
                 exit(0);
                 break;
             default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
-                system("pause");
+                cout << endl
+                     << "Choosen option do not exist." << endl
+                     << endl;
+                cin.get();
                 break;
             }
         }
         else
         {
-            if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true)
+            if (!personalBudget.isUserLogged())
 
-                wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
+                choice = personalBudget.chooseActionsFromPersonalBudgetMenu();
 
-            switch (wybor)
+            switch (choice)
             {
-            case '1':
-                ksiazkaAdresowa.dodajAdresata();
+            case '1':; // ksiazkaAdresowa.dodajAdresata();
                 break;
-            case '2':
-                ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+            case '2':; // ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                 break;
-            case '3':
-                ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+            case '3':; // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
                 break;
-            case '4':
-                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+            case '4':; // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
-            case '5':
-                ksiazkaAdresowa.usunAdresata();
+            case '5':; // ksiazkaAdresowa.usunAdresata();
                 break;
-            case '6':
-                ;ksiazkaAdresowa.edytujAdresata();
+            case '6':; //;ksiazkaAdresowa.edytujAdresata();
                 break;
-            case '7':
-                ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+            case '7':; // ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
-                ksiazkaAdresowa.wylogowywanieUzytkownika();
+                personalBudget.userLogout();
                 break;
             }
         }
     }
     return 0;
 }
+
+// #include "UserMenager.h"
+// #include "DateMenager.h"
+// #include "AccountMovementMenager.h"
+
+// int main()
+// {
+
+//     UserMenager userMenager("Users.xml");
+
+//     userMenager.displayAllUsers();
+
+// //    userMenager.userRegistration();
+
+//     userMenager.userLogin();
+
+// //    userMenager.changePasswordForLoggedUser();
+
+// //    userMenager.userRegistration();
+// //    userMenager.userRegistration();
+// //    userMenager.userRegistration();
+
+// //    userMenager.displayAllUsers();
+
+//     AccountMovementMenager accountMovementMenager("Incomes.xml", "Expenses.xml", userMenager.getLoggedUser());
+
+//     accountMovementMenager.showCurrentMonthBalance();
+//     accountMovementMenager.showPreviousMonthBalance();
+//     accountMovementMenager.showSelectedPeriodBalance();
+
+//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.incomes);
+//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.expenses);
+
+//    accountMovementMenager.addIncome();
+//
+//    accountMovementMenager.addExpense();
