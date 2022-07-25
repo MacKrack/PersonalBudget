@@ -17,7 +17,7 @@ class PersonalBudget
 
 public:
     PersonalBudget(string fileNameWithUsers, string fileNameWithIncomes, string fileNameWithExpanses)
-    : userMenager(fileNameWithUsers), FILE_NAME_WITH_INCOMES(fileNameWithIncomes), FILE_NAME_WITH_EXPANSES(fileNameWithExpanses)
+        : userMenager(fileNameWithUsers), FILE_NAME_WITH_INCOMES(fileNameWithIncomes), FILE_NAME_WITH_EXPANSES(fileNameWithExpanses)
     {
         accountMovementMenager = NULL;
     };
@@ -31,13 +31,19 @@ public:
     void userLogin();
     void changePasswordForLoggedUser();
     void userLogout();
+    int getUserIdFromLoggedUser();
     bool isUserLogged();
     char chooseActionsFromMainMenu();
     char chooseActionsFromPersonalBudgetMenu();
 
-// temp
+    void addIncome();
+    void addExpense();
+    void showCurrentMonthBalance();
+    void showPreviousMonthBalance();
+    void showSelectedPeriodBalance();
+
+    // temp
     void displayAllUsers();
-    
 };
 
 #endif PERSONALBUDGET_H

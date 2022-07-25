@@ -29,10 +29,7 @@ void PersonalBudget::userLogout()
 
 bool PersonalBudget::isUserLogged()
 {
-    if (!userMenager.isUserLogged())
-        return false;
-    else
-        return true;
+    return userMenager.isUserLogged();
 }
 
 char PersonalBudget::chooseActionsFromMainMenu()
@@ -57,22 +54,67 @@ char PersonalBudget::chooseActionsFromPersonalBudgetMenu()
     char choose;
 
     system("clear");
-    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << " >>> PERSONAL BUDGET MENU <<<" << endl;
     cout << "---------------------------" << endl;
-    cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyszukaj po imieniu" << endl;
-    cout << "3. Wyszukaj po nazwisku" << endl;
-    cout << "4. Wyswietl adresatow" << endl;
-    cout << "5. Usun adresata" << endl;
-    cout << "6. Edytuj adresata" << endl;
+    cout << "1. Add income" << endl;
+    cout << "2. Add expense" << endl;
+    cout << "3. Current month balance" << endl;
+    cout << "4. Previous month balance" << endl;
+    cout << "5. Selected period balance" << endl;
     cout << "---------------------------" << endl;
-    cout << "7. Zmien haslo" << endl;
-    cout << "8. Wyloguj sie" << endl;
+    cout << "6. Change password" << endl;
+    cout << "0. Logout" << endl;
     cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
+    cout << "Your choise: ";
     choose = AdditionalMethods::loadChar();
 
     return choose;
+}
+
+int PersonalBudget::getUserIdFromLoggedUser()
+{
+    userMenager.getUserIdFromLoggedUser();
+}
+
+void PersonalBudget::addIncome()
+{
+    if (userMenager.isUserLogged())
+    {
+        accountMovementMenager->addIncome();
+    }
+    else
+    {
+        cout << "Please login before add account movemenet." << endl;
+        cin.get();
+    }
+}
+
+void PersonalBudget::addExpense()
+{
+    if (userMenager.isUserLogged())
+    {
+        accountMovementMenager->addExpense();
+    }
+    else
+    {
+        cout << "Please login before add account movemenet." << endl;
+        cin.get();
+    }
+}
+
+void PersonalBudget::showCurrentMonthBalance()
+{
+    accountMovementMenager->showCurrentMonthBalance();
+}
+
+void PersonalBudget::showPreviousMonthBalance()
+{
+    accountMovementMenager->showPreviousMonthBalance();
+}
+
+void PersonalBudget::showSelectedPeriodBalance()
+{
+    accountMovementMenager->showSelectedPeriodBalance();
 }
 
 // temp
@@ -80,3 +122,6 @@ void PersonalBudget::displayAllUsers()
 {
     userMenager.displayAllUsers();
 }
+
+//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.incomes);
+//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.expenses);

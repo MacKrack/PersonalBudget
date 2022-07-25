@@ -13,7 +13,7 @@ int main()
 
     while (true)
     {
-        if (personalBudget.isUserLogged())
+        if (personalBudget.getUserIdFromLoggedUser() == 0)
         {
             choice = personalBudget.chooseActionsFromMainMenu();
 
@@ -25,11 +25,6 @@ int main()
             case '2':
                 personalBudget.userLogin();
                 break;
-            //    temp
-            case '3':
-                personalBudget.displayAllUsers();
-                break;
-                //
             case '9':
                 exit(0);
                 break;
@@ -43,27 +38,31 @@ int main()
         }
         else
         {
-            if (!personalBudget.isUserLogged())
+            if (personalBudget.isUserLogged())
 
                 choice = personalBudget.chooseActionsFromPersonalBudgetMenu();
 
             switch (choice)
             {
-            case '1':; // ksiazkaAdresowa.dodajAdresata();
+            case '1':
+                personalBudget.addIncome();
                 break;
-            case '2':; // ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+            case '2':
+                personalBudget.addExpense();
                 break;
-            case '3':; // ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+            case '3':
+                personalBudget.showCurrentMonthBalance();
                 break;
-            case '4':; // ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+            case '4':
+                personalBudget.showPreviousMonthBalance();
                 break;
-            case '5':; // ksiazkaAdresowa.usunAdresata();
+            case '5':
+                personalBudget.showSelectedPeriodBalance();
                 break;
-            case '6':; //;ksiazkaAdresowa.edytujAdresata();
+            case '6':
+                personalBudget.changePasswordForLoggedUser();
                 break;
-            case '7':; // ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-                break;
-            case '8':
+            case '0':
                 personalBudget.userLogout();
                 break;
             }
@@ -71,39 +70,3 @@ int main()
     }
     return 0;
 }
-
-// #include "UserMenager.h"
-// #include "DateMenager.h"
-// #include "AccountMovementMenager.h"
-
-// int main()
-// {
-
-//     UserMenager userMenager("Users.xml");
-
-//     userMenager.displayAllUsers();
-
-// //    userMenager.userRegistration();
-
-//     userMenager.userLogin();
-
-// //    userMenager.changePasswordForLoggedUser();
-
-// //    userMenager.userRegistration();
-// //    userMenager.userRegistration();
-// //    userMenager.userRegistration();
-
-// //    userMenager.displayAllUsers();
-
-//     AccountMovementMenager accountMovementMenager("Incomes.xml", "Expenses.xml", userMenager.getLoggedUser());
-
-//     accountMovementMenager.showCurrentMonthBalance();
-//     accountMovementMenager.showPreviousMonthBalance();
-//     accountMovementMenager.showSelectedPeriodBalance();
-
-//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.incomes);
-//    accountMovementMenager.displayAllAccountMovement(accountMovementMenager.expenses);
-
-//    accountMovementMenager.addIncome();
-//
-//    accountMovementMenager.addExpense();
