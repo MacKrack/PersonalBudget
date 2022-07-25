@@ -1,67 +1,69 @@
 #include <iostream>
 
+#include "PersonalBudget.h"
+
 using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
-    char wybor;
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml");
+
+    char choice;
 
     while (true)
     {
-        if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
+        if (personalBudget.getUserIdFromLoggedUser() == 0)
         {
-            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
+            choice = personalBudget.chooseActionsFromMainMenu();
 
-            switch (wybor)
+            switch (choice)
             {
             case '1':
-                ksiazkaAdresowa.rejestracjaUzytkownika();
+                personalBudget.userRegistration();
                 break;
             case '2':
-                ksiazkaAdresowa.logowanieUzytkownika();
+                personalBudget.userLogin();
                 break;
             case '9':
                 exit(0);
                 break;
             default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
-                system("pause");
+                cout << endl
+                     << "Choosen option do not exist." << endl
+                     << endl;
+                cin.get();
                 break;
             }
         }
         else
         {
-            if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true)
+            if (personalBudget.isUserLogged())
 
-                wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
+                choice = personalBudget.chooseActionsFromPersonalBudgetMenu();
 
-            switch (wybor)
+            switch (choice)
             {
             case '1':
-                ksiazkaAdresowa.dodajAdresata();
+                personalBudget.addIncome();
                 break;
             case '2':
-                ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
+                personalBudget.addExpense();
                 break;
             case '3':
-                ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                personalBudget.showCurrentMonthBalance();
                 break;
             case '4':
-                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                personalBudget.showPreviousMonthBalance();
                 break;
             case '5':
-                ksiazkaAdresowa.usunAdresata();
+                personalBudget.showSelectedPeriodBalance();
                 break;
             case '6':
-                ;ksiazkaAdresowa.edytujAdresata();
+                personalBudget.changePasswordForLoggedUser();
                 break;
-            case '7':
-                ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-                break;
-            case '8':
-                ksiazkaAdresowa.wylogowywanieUzytkownika();
+            case '0':
+                personalBudget.userLogout();
                 break;
             }
         }

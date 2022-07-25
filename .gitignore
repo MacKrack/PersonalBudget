@@ -8,3 +8,4 @@ obj/
 *.bak
 *.DS_Store
 main
+*.vscode/

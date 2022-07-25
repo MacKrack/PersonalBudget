@@ -7,7 +7,9 @@ void UserMenager::userRegistration()
     users.push_back(user);
     fileWithUsers.addUserToFile(user);
 
-    cout << endl << "Account created successfully!" << endl << endl;
+    cout << endl
+         << "Account created successfully!" << endl
+         << endl;
     cin.get();
 }
 
@@ -23,8 +25,7 @@ User UserMenager::giveNewUserDetails()
         cout << "Enter login: ";
         cin >> login;
         user.setLogin(login);
-    }
-    while (isLoginExist(user.getLogin())==true);
+    } while (isLoginExist(user.getLogin()) == true);
 
     string password;
     cout << "Enter password: ";
@@ -36,19 +37,20 @@ User UserMenager::giveNewUserDetails()
 
 int UserMenager::getUserIdForNewUser()
 {
-    if(users.empty()==true)
+    if (users.empty() == true)
         return 1;
     else
-        return users.back().getUserId()+1;
+        return users.back().getUserId() + 1;
 }
 
 bool UserMenager::isLoginExist(string login)
 {
-    for (int i=0; i < users.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
         if (users[i].getLogin() == login)
         {
-            cout << endl << "User with that login is already exist." << endl;
+            cout << endl
+                 << "User with that login is already exist." << endl;
             return true;
         }
     }
@@ -60,20 +62,22 @@ int UserMenager::userLogin()
     string login = "", password = "";
 
     cout << "Enter login: ";
-    login=AdditionalMethods::loadLine();
+    login = AdditionalMethods::loadLine();
 
-    for (int i=0; i<users.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
         if (users[i].getLogin() == login)
         {
             for (int attempsNumber = 3; attempsNumber > 0; attempsNumber--)
             {
                 cout << "Enter password. Attempts left: " << attempsNumber << ": ";
-                password=AdditionalMethods::loadLine();
+                password = AdditionalMethods::loadLine();
 
                 if (users[i].getPassword() == password)
                 {
-                    cout << endl << "Successfully logged." << endl << endl;
+                    cout << endl
+                         << "Successfully logged." << endl
+                         << endl;
                     cin.get();
                     loggedUser = users[i];
                     return idLoggedUser = users[i].getUserId();
@@ -84,7 +88,8 @@ int UserMenager::userLogin()
             return idLoggedUser = 0;
         }
     }
-    cout << "User with that login does not exist" << endl << endl;
+    cout << "User with that login does not exist" << endl
+         << endl;
     cin.get();
     return idLoggedUser = 0;
 }
@@ -93,15 +98,16 @@ void UserMenager::changePasswordForLoggedUser()
 {
     string newPassword = "";
     cout << "Enter new password: ";
-    newPassword=AdditionalMethods::loadLine();
+    newPassword = AdditionalMethods::loadLine();
 
-    for (int i=0; i<users.size(); i++)
+    for (int i = 0; i < users.size(); i++)
     {
         if (users[i].getUserId() == idLoggedUser)
         {
             users[i].setPassword(newPassword);
             loggedUser.setPassword(newPassword);
-            cout << "Password changed." << endl << endl;
+            cout << "Password changed." << endl
+                 << endl;
             cin.get();
         }
     }
@@ -115,12 +121,12 @@ int UserMenager::getUserIdFromLoggedUser()
 
 int UserMenager::userLogout()
 {
-    return idLoggedUser=0;
+    return idLoggedUser = 0;
 }
 
 bool UserMenager::isUserLogged()
 {
-    if (loggedUser.getUserId()>0)
+    if (loggedUser.getUserId() > 0)
         return true;
     else
         return false;
@@ -135,9 +141,10 @@ void UserMenager::displayAllUsers()
     }
     else
     {
-        for (int i=0; i < users.size(); i++)
+        for (int i = 0; i < users.size(); i++)
         {
-            cout << endl << users[i].getUserId() << endl;
+            cout << endl
+                 << users[i].getUserId() << endl;
             cout << users[i].getLogin() << endl;
             cout << users[i].getPassword() << endl;
         }
